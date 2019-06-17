@@ -38,7 +38,9 @@ class Console:
         else:  # nor anything that isn't mode 0
             self._copy = lambda x: x
 
-    def refresh_un(self):
+    def refresh_un(self, new_griglia=None):
+        if new_griglia is not None:
+            self.griglia = new_griglia
         self.clear()
         for row in self.griglia:
             for cell in row:
