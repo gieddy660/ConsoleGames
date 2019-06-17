@@ -16,21 +16,9 @@ _setPosition.argtypes = [Handle, Coordinates]
 _setPosition.restype = wintypes.BOOL
 
 
-def set_position(x, y):
+def set_position(x, y, messaggio):
     handle = _getStdHandle(STDOUT)
     position = Coordinates(x, y)
-    return _setPosition(handle, position)
-
-
-if __name__ == '__main__':
-    from time import sleep
-    from os import system
-
-    while True:
-        a = system('cls')
-        print('######\n' * 3)
-        for _ in range(1, 5):
-            sleep(1)
-            f = set_position(_, 1)
-            print('-')
-        sleep(1)
+    res = _setPosition(handle, position)
+    print(messaggio)
+    return res
